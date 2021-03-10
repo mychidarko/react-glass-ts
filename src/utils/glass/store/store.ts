@@ -1,5 +1,6 @@
-import { setGlobal, addReducer, getGlobal, useGlobal } from "reactn";
+import { setGlobal, addReducer, getGlobal, useGlobal, useDispatch } from "reactn";
 import { Hook, InternalOptions, Module, Options, State } from "./@types/store";
+import GlassX from ".";
 
 export default class GlassXBase {
     protected plugins: Array<any> = [];
@@ -50,6 +51,7 @@ export default class GlassXBase {
 
         this._options.defaultState = state;
         this._options.state = state;
+        this._options.reducers = reducers;
 
         const reducerKeys = Object.keys(reducers);
 
@@ -104,11 +106,15 @@ export default class GlassXBase {
         return globalState[state];
     }
 
-    reset() {
+    public reducer(reducer: string) {
+        return this._options.reducers[reducer];
+    }
+
+    public reset() {
         this.set(this._options.defaultState);
     }
 
-    compareState(state: State|string) {
+    protected compareState(state: State|string) {
         state = JSON.stringify(state);
         let globalState = getGlobal();
         globalState = JSON.stringify(globalState);
@@ -121,4 +127,10 @@ export const useStore = (item: string) => {
     const [value] = useGlobal<any>(item);
 
     return value;
+}
+
+export const useReducer = (reducer: string) => {
+    const dispatcher = useDispatch(GlassX.reducer(reducer));
+
+    return dispatcher;
 }
