@@ -1,6 +1,6 @@
 # React Glass TS
 
-React Glass TS is a simple react + ts boilerplate which focuses on providing a simple and pain-free developer experience.
+React Glass TS is a simple react + ts boilerplate which focuses on providing a simple and pain-free developer experience. This package uses typescript, if you prefer javascript, you can get the javascript version [here](https://github.com/darko-mychi/react-glass).
 
 ## Features
 
@@ -12,11 +12,13 @@ Although react docs say you can arrange your project in any way that feels conve
 
 **Glass router has been published as an independent package. You can check it out [here](https://github.com/darko-mychi/glass-router)**
 
+**Glass router's source files are available in `utils/glass/router`. You can directly modify glass router there or install the published package if your prefer.**
+
 Glass router is a wrapper around `react-router-dom` which provides a clean and developer friendly syntax and usage for your apps.
 
-Glass router is initialized in `src/routes.js`. That's where you need to import your routes. Each view has a routes file in which all routes relating to that view are defined. This file is then imported in the main routes file.
+Glass router is initialized in `src/routes.ts`. That's where you need to import your routes. Each view has a routes file in which all routes relating to that view are defined. This file is then imported in the main routes file.
 
-```js
+```ts
 import home from "./views/Home/routes";
 import login from "./views/Login/routes";
 
@@ -30,7 +32,7 @@ Glass router is inspired by vue router and so uses the exact same syntax but inc
 
 Route with `exact` prop
 
-```js
+```ts
 import Home from "./Home"
 
 export default [
@@ -45,7 +47,7 @@ export default [
 
 Route with `render` instead of `component`.
 
-```js
+```ts
 {
   path: "*",
   render: () => <h2>Page Not Found</h2>,
@@ -58,21 +60,21 @@ All routing operations can be performed on the glassrouter object no matter the 
 
 Just as said above, the Glass Router (GlassRX) uses a syntax fairly the same as vue-router's syntax. As such, you can simply import the router object and call the `push` method.
 
-```js
-import GlassRouter from "glass-router";
+```ts
+import { GlassRouter } from "./utils/glass/router";
 
 return GlassRouter.push("/auth/login");
 ```
 
 Just like vue-router, you can navigate to a route by passing an object instead like this:
 
-```js
+```ts
 return GlassRouter.push({ name: "login" });
 ```
 
 The name here is the name given to the route when the route was defined:
 
-```js
+```ts
 {
   path: "/",
   exact: true,
@@ -85,15 +87,15 @@ Routing with the route name is a good practice, as it prevents repition and easi
 
 GlassRX also provides a simple way to route when using JSX, just as done with `react-router`
 
-```js
-import { Link } from "glass-router";
+```ts
+import { Link } from "./utils/glass/router";
 
 <Link to="/home">Homepage</Link>
 ```
 
 Unlike the base `react-router` link, you can also use named routes here:
 
-```js
+```ts
 <Link to={{ name: "home" }}>Homepage</Link>
 ```
 
@@ -105,11 +107,11 @@ One more Vue inspired feature, GlassX is a state management solution that follow
 
 For now, glassX just provides a clean way to break up your components states and reducers into seperate files and import them as modules just as done in VueX.
 
-Both updating and reading your state require you to use directly use reactn as done in `src/views/Home/Home.jsx` since glassX hasn't developed those features due to performance issues.
+Both updating and reading your state require you to use directly use reactn as done in `src/views/Home/Home.tsx` since glassX hasn't developed those features due to performance issues.
 
-Example state.js
+Example state.ts
 
-```js
+```ts
 const state = {
   initial: "name",
 };
@@ -117,9 +119,9 @@ const state = {
 export default state;
 ```
 
-Example reducer.js
+Example reducer.ts
 
-```js
+```ts
 export const SET_USER = (state, dispatch, payload) => ({
   user: { ...state.user, ...payload },
 });
@@ -127,7 +129,7 @@ export const SET_USER = (state, dispatch, payload) => ({
 
 Example read and update state:
 
-```js
+```tsx
 import { useGlobal } from "reactn";
 import { useTitle } from "../../utils/hooks";
 
@@ -150,7 +152,7 @@ Glass fetch is an http client written as a wrapper around axios. Although axios 
 
 Axios vs GlassFX
 
-```js
+```ts
 // axios
 axios.get("BASEURL/movies").then(...)...
 
@@ -160,7 +162,7 @@ $get("movies").then(...)...
 
 After login:
 
-```js
+```ts
 // axios
 const headers = {
     Authorization: `Bearer ${TOKEN}`,
@@ -172,9 +174,9 @@ axios.get("BASEURL/user/me", headers).then(...)...
 $get("user/me").then(...)...
 ```
 
-All you need to do to get started with GlassFetch is configure your base URL and your token save string in `src/config/constants.js`
+All you need to do to get started with GlassFetch is configure your base URL and your token save string in `src/config/constants.ts`
 
-```js
+```ts
 export const TOKEN_STORAGE_KEY = "token";
 export const USER_STORAGE_KEY = "user";
 export const API_URL = "https://api.com/";
