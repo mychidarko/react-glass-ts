@@ -1,46 +1,189 @@
-# Getting Started with Create React App
+# React Glass TS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Glass TS is a simple react + ts boilerplate which focuses on providing a simple and pain-free developer experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Scalable Project Structure
 
-### `yarn start`
+Although react docs say you can arrange your project in any way that feels convenient to you, there are a couple of techniques that you can emplore in your directory structure that makes scaling/working on your projects much easier. Some of these have been done by default here. Just download and you're good to go.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Glass Router (GlassRX)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Glass router has been published as an independent package. You can check it out [here](https://github.com/darko-mychi/glass-router)**
 
-### `yarn test`
+Glass router is a wrapper around `react-router-dom` which provides a clean and developer friendly syntax and usage for your apps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Glass router is initialized in `src/routes.js`. That's where you need to import your routes. Each view has a routes file in which all routes relating to that view are defined. This file is then imported in the main routes file.
 
-### `yarn build`
+```js
+import home from "./views/Home/routes";
+import login from "./views/Login/routes";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const routes = [
+  ...home,
+  ...login,
+];
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Glass router is inspired by vue router and so uses the exact same syntax but includes `react-router` specific options like `exact` and `render`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Route with `exact` prop
 
-### `yarn eject`
+```js
+import Home from "./Home"
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+export default [
+  {
+    path: "/",
+    exact: true,
+    component: Home,
+    name: "home",
+  },
+];
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Route with `render` instead of `component`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```js
+{
+  path: "*",
+  render: () => <h2>Page Not Found</h2>,
+},
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Routing with glass router
 
-## Learn More
+All routing operations can be performed on the glassrouter object no matter the component type you're using.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Just as said above, the Glass Router (GlassRX) uses a syntax fairly the same as vue-router's syntax. As such, you can simply import the router object and call the `push` method.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+import GlassRouter from "glass-router";
+
+return GlassRouter.push("/auth/login");
+```
+
+Just like vue-router, you can navigate to a route by passing an object instead like this:
+
+```js
+return GlassRouter.push({ name: "login" });
+```
+
+The name here is the name given to the route when the route was defined:
+
+```js
+{
+  path: "/",
+  exact: true,
+  component: Home,
+  name: "home",
+},
+```
+
+Routing with the route name is a good practice, as it prevents repition and easily allows you to change the route path and not break your app in any way.
+
+GlassRX also provides a simple way to route when using JSX, just as done with `react-router`
+
+```js
+import { Link } from "glass-router";
+
+<Link to="/home">Homepage</Link>
+```
+
+Unlike the base `react-router` link, you can also use named routes here:
+
+```js
+<Link to={{ name: "home" }}>Homepage</Link>
+```
+
+**Check out the glassRX repo for updates.**
+
+### GlassX
+
+One more Vue inspired feature, GlassX is a state management solution that follows a syntax close to VueX. GlassX is based on Reactn and actually uses [reactn](https://www.npmjs.com/package/reactn) features under the hood, so after creating your glassX store, you can use `useGlobal` and all other reactn methods to mutate and read your global state.
+
+For now, glassX just provides a clean way to break up your components states and reducers into seperate files and import them as modules just as done in VueX.
+
+Both updating and reading your state require you to use directly use reactn as done in `src/views/Home/Home.jsx` since glassX hasn't developed those features due to performance issues.
+
+Example state.js
+
+```js
+const state = {
+  initial: "name",
+};
+
+export default state;
+```
+
+Example reducer.js
+
+```js
+export const SET_USER = (state, dispatch, payload) => ({
+  user: { ...state.user, ...payload },
+});
+```
+
+Example read and update state:
+
+```js
+import { useGlobal } from "reactn";
+import { useTitle } from "../../utils/hooks";
+
+export default function Home() {
+  useTitle("Home");
+
+  const [something, setSomething] = useGlobal("something");
+
+  setTimeout(() => {
+    setSomething("hobies");
+  }, 3000);
+  ...
+```
+
+**GlassX is still under development, you can check this page for updates and new features.**
+
+### Glass Fetch (GlassFX)
+
+Glass fetch is an http client written as a wrapper around axios. Although axios is simple and easy to use Glass fetch takes axios to an even better level with it's personalization. Axios is easy to use, but glass fx is made for your project.
+
+Axios vs GlassFX
+
+```js
+// axios
+axios.get("BASEURL/movies").then(...)...
+
+// GlassFX
+$get("movies").then(...)...
+```
+
+After login:
+
+```js
+// axios
+const headers = {
+    Authorization: `Bearer ${TOKEN}`,
+};
+
+axios.get("BASEURL/user/me", headers).then(...)...
+
+// GlassFX
+$get("user/me").then(...)...
+```
+
+All you need to do to get started with GlassFetch is configure your base URL and your token save string in `src/config/constants.js`
+
+```js
+export const TOKEN_STORAGE_KEY = "token";
+export const USER_STORAGE_KEY = "user";
+export const API_URL = "https://api.com/";
+export const APP_NAME = "";
+export const APP_TITLE = "";
+```
+
+## More
+
+There are additional readme files in sub directories which give you information about the items in that sub directory.
+
+You can go through those files for more info about the items in there.
