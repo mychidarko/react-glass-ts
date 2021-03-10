@@ -20,7 +20,8 @@ export default class GlassXBase {
 
     public store(options: Options|null = null) {
         let state = options?.state || {};
-        let reducers = options?.reducers || {};
+        // fix this any later
+        let reducers: any = options?.reducers || {};
         let modules: Module[] = options?.modules || [];
         const plugins = options?.plugins || [];
 
@@ -28,6 +29,12 @@ export default class GlassXBase {
 
         if (modules.length > 0) {
             modules.forEach((module) => {
+                let key: string|null = null;
+
+                if (module.namespace && module.namespace.length > 0) {
+                    key = module.namespace;
+                }
+
                 if (module.state) {
                     const mstate = module.state;
 
@@ -40,10 +47,17 @@ export default class GlassXBase {
                 if (module.reducers) {
                     const mreducers = module.reducers;
 
-                    reducers = {
-                        ...reducers,
-                        ...mreducers,
-                    };
+                    if (key) {
+                        reducers = {
+                            ...reducers,
+                            [key]: mreducers,
+                        };
+                    } else {
+                        reducers = {
+                            ...reducers,
+                            ...mreducers,
+                        };
+                    }
                 }
             });
         }
@@ -102,7 +116,14 @@ export default class GlassXBase {
     }
 
     public reducer(reducer: string) {
-        return this._options.reducers[reducer];
+        const parts = reducer.split(".");
+        let base: any = this._options.reducers[parts[0]];
+        
+        if (parts.length > 1) {
+            base = base[parts[1]];
+        }
+
+        return base;
     }
 
     public reset() {

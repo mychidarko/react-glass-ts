@@ -2,7 +2,7 @@ import { useStore, useReducer } from "@/utils/glass/store";
 
 const Home = () => {
   const home = useStore("home");
-  const changeHome = useReducer("changeHome");
+  const changeHome = useReducer("home.changeHome");
 
   return (
     <div>
