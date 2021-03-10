@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import GlassX, { useStore } from "../utils/glass/store";
 import { Navigator, StepViewProps } from "./@types/StepView";
 
@@ -13,6 +13,8 @@ const StepView: React.FC<StepViewProps> = ({
         GlassX.set({ stepView: newActive });
     };
     // const [active, setActive] = useState(value || 0);
+
+    children = React.Children.toArray(children);
 
     const next: React.MouseEventHandler<HTMLButtonElement> = () => {
         if (active === children.length - 1) {

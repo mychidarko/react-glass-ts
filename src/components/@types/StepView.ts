@@ -6,7 +6,7 @@ export interface Navigator {
 };
 
 export interface StepViewProps {
-    children: React.ReactChild[];
+    children: any;
     value?: number;
     [key: string]: any;
 };

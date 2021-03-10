@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   loader,
   variant,
-  color,
+  color = "default",
   icon,
   loaderColor,
   loaderSize,
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   const btnVariant = (variant && `btn-${variant}`) || "";
   const btnColor = (color && `-color-${color}`) || "";
   const props = {
-    className: `c-btn btn btn-primary flex flex:center-all ${btnVariant} ${className} ${btnColor}`,
+    className: `c-btn btn flex flex:center-all ${btnVariant} ${className} ${btnColor}`,
     disabled: disabled || loading || false,
     ...rest,
   };

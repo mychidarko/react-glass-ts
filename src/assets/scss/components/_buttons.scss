@@ -2,7 +2,7 @@
     border-radius: 100px;
 }
 
-@mixin buttonStyles($color: $my-primary, $text: #fff) {
+@mixin buttonStyles($color: rgb(30, 90, 255), $text: #fff) {
     background-color: $color !important;
     border-color: $color !important;
     outline-color: $color !important;
@@ -41,7 +41,7 @@
 
 .c-btn {
     &.-color-red, &.btn-danger {
-        @include buttonStyles($my-danger);
+        @include buttonStyles(rgb(224, 22, 8));
     }
 
     &.-color-transparent {
