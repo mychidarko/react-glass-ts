@@ -4,38 +4,3 @@
 p, span, h1, h2, h3, h4, h5, h6, a {
     color: #212529;
 }
-
-@font-face {
-    font-family: "SF Pro Display";
-    src: url(./../fonts/SF-Pro-Display-Regular.otf);
-}
-
-@font-face {
-    font-family: "SF Pro Display";
-    src: url(./../fonts/SF-Pro-Display-Regular.otf);
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "SF Pro Display";
-    src: url(./../fonts/SF-Pro-Display-Semibold.otf);
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: "SF Pro Display";
-    src: url(./../fonts/SF-Pro-Display-Bold.otf);
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: "SF Pro Display";
-    src: url(./../fonts/SF-Pro-Display-Light.otf);
-    font-weight: 300;
-}
-
-@mixin sf-pro {
-    letter-spacing: 0.03em;
-    font-family: $font-secondary;
-    line-height: 28px;
-}

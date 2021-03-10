@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './App';
-import { unregister } from './config/registerServiceWorker';
+import "./assets/scss/index.scss";
+
 import reportWebVitals from './config/reportWebVitals';
+import { unregister } from './config/registerServiceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
