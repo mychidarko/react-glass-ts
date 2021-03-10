@@ -1,0 +1,58 @@
+.btn-rounded {
+    border-radius: 100px;
+}
+
+@mixin buttonStyles($color: $my-primary, $text: #fff) {
+    background-color: $color !important;
+    border-color: $color !important;
+    outline-color: $color !important;
+    color: $text !important;
+
+    &.btn-outlined {
+        @if $color != transparent {
+            background-color: $text !important;
+            color: $color !important;
+            border-color: $color !important;
+            outline-color: $color !important;
+
+            &:hover {
+                color: $text !important;
+                background-color: $color !important;
+            }
+        } @else {
+            border-color: lighten($text, 80%) !important;
+            outline-color: lighten($text, 80%) !important;
+
+            &:hover {
+                color: white !important;
+                background-color: $text !important;
+            }
+        }
+    }
+}
+
+.btn-primary {
+    @include buttonStyles();
+}
+
+.btn-lg {
+    padding: 15px 40px !important;
+}
+
+.c-btn {
+    &.-color-red, &.btn-danger {
+        @include buttonStyles($my-danger);
+    }
+
+    &.-color-transparent {
+        @include buttonStyles(transparent, black);
+    }
+
+    &.-color-blue {
+        @include buttonStyles(rgb(0, 89, 255));
+    }
+
+    &.-color-green {
+        @include buttonStyles(rgba(0, 177, 0, 0.822));
+    }
+}

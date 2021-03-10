@@ -1,0 +1,14 @@
+@import "./home";
+@import "./auth";
+@import "./order";
+@import "./dashboard";
+
+.page {
+    padding: 0px 100px 5px 100px;
+    align-self: center;
+    max-width: $page-max-width;
+
+    * {
+        text-align: left;
+    }
+}

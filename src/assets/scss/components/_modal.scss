@@ -1,0 +1,75 @@
+.glass-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    &.-modal-show {
+        display: flex;
+        
+        .glass-modal__modal {
+            @extend .animation\:slide-up;
+        }
+    }
+
+    &__overlay {
+        background-color: rgba(0, 0, 0, 0.35);
+        z-index: 100;
+        width: 100vw !important;
+        height: 100vh !important;
+        position: fixed;
+    }
+
+    &__modal {
+        background-color: white;
+        z-index: 200;
+        position: relative;
+
+        &.-size-sm {
+            width: 300px;
+        }
+
+        &.-size-md {
+            width: 500px;
+        }
+
+        &.-size-lg {
+            width: 700px;
+        }
+
+        &.-size-xl {
+            width: 900px;
+        }
+
+        &.-size-full {
+            width: 100vw;
+        }
+
+        &__close {
+            position: absolute;
+        }
+    }
+}
+
+.sell-modal, .buy-modal {
+    .glass-modal__modal {
+        border-radius: 5px;
+
+        &__close {
+            right: -40px;
+            background-color: transparent;
+            border: none !important;
+            outline: none;
+            color: white;
+            padding: 0 !important;
+        }
+    }
+
+    .modal__content {
+        padding: 40px 30px;
+    }
+}

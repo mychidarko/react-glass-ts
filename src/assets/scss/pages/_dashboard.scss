@@ -1,0 +1,55 @@
+.dashboard-page {
+    .dashboard {
+        &__title {
+            font-weight: 700;
+        }
+
+        &__rates {
+            &__card {
+                border: 1px solid black;
+                width: 100%;
+                border-radius: 8px;
+                padding: 25px;
+                position: relative;
+
+                .rates__card__icon {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 8px;
+                }
+
+                .c-btn {
+                    width: 100px !important;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                .out-of-stock__overlay {
+                    display: none;
+                }
+
+                &.-out-of-stock {
+                    .rates__card__title {
+                        color: white;
+                        z-index: 10;
+                    }
+
+                    .out-of-stock__overlay {
+                        display: flex;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.95);
+                        position: absolute;
+                        color: white;
+                        border-radius: 6px;
+                        text-align: center;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
