@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      {home ? <h2>Home</h2> : <h2>Not Home</h2>}
+      {home ? <h2>I'm Home</h2> : <h2>I'm Not Home</h2>}
       <button onClick={changeHome}>Change Home</button>
     </div>
   );
