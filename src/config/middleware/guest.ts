@@ -6,7 +6,7 @@ const guest = ({ next }: MiddlwareContext) => {
 		return next();
 	}
 
-    return next({ name: "dashboard" });
+    return next({ name: "home" });
 }
 
 export default guest;

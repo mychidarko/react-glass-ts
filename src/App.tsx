@@ -1,11 +1,17 @@
-import React from 'react';
+import { ErrorBoundary } from './utils';
+import { GlassRouter } from './utils/glass/router';
+
+import "./store";
+import "./routes";
 
 function App() {
   return (
-    <div className="App">
-      Hello
-    </div>
+    <ErrorBoundary>
+      <Routes />
+    </ErrorBoundary>
   );
 }
+
+const Routes = () => GlassRouter.render();
 
 export default App;
