@@ -160,3 +160,7 @@ export const useStore = (item: string) => {
 export const useReducer = (reducer: string) => {
     return GlassX.useReducer(reducer);
 }
+
+export const setStore = (item: State) => {
+    return GlassX.set(item);
+}

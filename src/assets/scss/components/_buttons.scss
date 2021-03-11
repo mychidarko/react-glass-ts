@@ -1,31 +1,39 @@
-.btn-rounded {
-    border-radius: 100px;
+.btn-rounded, .btn-fab {
+    border-radius: 100px !important;
+}
+
+.btn-fab {
+    padding: 10px !important;
 }
 
 @mixin buttonStyles($color: rgb(30, 90, 255), $text: #fff) {
-    background-color: $color !important;
-    border-color: $color !important;
-    outline-color: $color !important;
-    color: $text !important;
+    background-color: $color;
+    border: 1px solid darken($color, 5%);
+    outline-color: $color;
+    color: $text;
+
+    &:hover {
+        background-color: darken($color, 5%);
+    }
 
     &.btn-outlined {
         @if $color != transparent {
-            background-color: $text !important;
-            color: $color !important;
-            border-color: $color !important;
-            outline-color: $color !important;
+            background-color: $text;
+            color: $color;
+            border: 1px solid $color;
+            outline-color: $color;
 
             &:hover {
-                color: $text !important;
-                background-color: $color !important;
+                color: $text;
+                background-color: $color;
             }
         } @else {
-            border-color: lighten($text, 80%) !important;
-            outline-color: lighten($text, 80%) !important;
+            border: 1px solid lighten($text, 80%);
+            outline-color: lighten($text, 80%);
 
             &:hover {
-                color: white !important;
-                background-color: $text !important;
+                color: white;
+                background-color: $text;
             }
         }
     }
@@ -40,6 +48,10 @@
 }
 
 .c-btn {
+    // remove padding to remove default button padding
+    padding: 5px 10px;
+    border-radius: 5px;
+
     &.-color-red, &.btn-danger {
         @include buttonStyles(rgb(224, 22, 8));
     }
@@ -52,7 +64,19 @@
         @include buttonStyles(rgb(0, 89, 255));
     }
 
+    &.-color-gold {
+        @include buttonStyles(rgb(221, 171, 7));
+    }
+
+    &.-color-purple {
+        @include buttonStyles(rgb(125, 6, 204));
+    }
+
     &.-color-green {
         @include buttonStyles(rgba(0, 177, 0, 0.822));
+    }
+
+    &:active, &:focus {
+        outline: none;
     }
 }

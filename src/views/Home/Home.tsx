@@ -1,12 +1,19 @@
-import { useStore, useReducer } from "@/utils/glass/store";
+import { useStore, useReducer, setStore } from "@/utils/glass/store";
 import Button from "@/components/Button";
 import StepView from "@/components/StepView";
 import React from "react";
-import { Navigator } from "src/src/components/@types/StepView";
+import { Navigator } from "@/components/@types/StepView";
+import Modal from "@/utils/glass/modal";
 
 const Home = () => {
   const home = useStore("home");
+  const modalOpen = useStore("modal");
+
+  // change global state using a reducer
   const changeHome = useReducer("home.changeHome");
+
+  // change global state using setStore
+  const toggleModal = () => setStore({ modal: !modalOpen });
 
   return (
     <div>
@@ -25,10 +32,15 @@ const Home = () => {
       <section>
         <h1>Buttons</h1>
         <p>The button component is 100% customizable and works well with all CSS libraries</p>
-        <Button loading={true} loaderColor="black">Loading</Button>
-        <Button>Button</Button>
-        <Button variant="rounded">Rounded</Button>
+        <Button loading={true} color="transparent" loaderColor="black">Loading</Button>
+        <Button color="gold">Button</Button>
+        <Button variant="rounded" color="purple">Rounded</Button>
+        <Button variant="fab" icon="add" color="blue"></Button>
+        <Button variant="outlined" color="green" onClick={toggleModal}>Toggle Modal</Button>
       </section>
+      <Modal show={modalOpen} close={toggleModal} name="demo-modal">
+        <h2>This is something</h2>
+      </Modal>
     </div>
   );
 };

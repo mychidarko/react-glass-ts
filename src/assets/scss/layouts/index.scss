@@ -4,10 +4,6 @@ html {
 }
 
 body {
-	max-height: 100vh;
-	height: 100vh;
-    background-color: #efeff1;
-
 	&::-webkit-scrollbar-track {
 		background-color: rgb(243, 243, 243);
 	}
