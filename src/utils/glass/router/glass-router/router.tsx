@@ -14,6 +14,7 @@ import {
   IRouterProps,
   MiddlwareContext,
 } from "../@types";
+import { GlassRouter } from ".";
 
 /**
  * Glass Router
@@ -385,3 +386,13 @@ export default class Router {
     return this._history;
   }
 }
+
+export const useHistory = () => {
+  return GlassRouter.history();
+};
+
+export const useRoute = () => {
+  return (route: To | string, state?: any) => {
+    GlassRouter.push(route, state);
+  };
+};

@@ -1,7 +1,7 @@
+import React from "react";
 import { useStore, useReducer, setStore } from "@/utils/glass/store";
 import Button from "@/components/Button";
 import StepView from "@/components/StepView";
-import React from "react";
 import { Navigator } from "@/components/@types/StepView";
 import Modal from "@/utils/glass/modal";
 
