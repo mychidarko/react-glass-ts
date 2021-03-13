@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import StepView from "@/components/StepView";
 import { Navigator } from "@/components/@types/StepView";
 import Modal from "@/utils/glass/modal";
+import { useRoute } from "@/utils/glass/router/glass-router/router";
 
 const Home = () => {
   const home = useStore("home");
@@ -15,6 +16,9 @@ const Home = () => {
   // change global state using setStore
   const toggleModal = () => setStore({ modal: !modalOpen });
 
+  // routing using glass router hooks
+  const navigate = useRoute();
+
   return (
     <div>
       <section>
@@ -22,6 +26,7 @@ const Home = () => {
         {home ? <h2>I'm Home</h2> : <h2>I'm Not Home</h2>}
         <Button onClick={changeHome}>Change Global State</Button>
       </section>
+      <Button onClick={() => navigate("/404")}>Go to 404</Button>
       <section>
         <h1>Step Component Example</h1>
         <StepView>

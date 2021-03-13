@@ -130,7 +130,7 @@ export default class GlassXBase {
         this.set(this._options.defaultState);
     }
 
-    protected compareState(state: State|string) {
+    protected compareState(state: State | string) {
         state = JSON.stringify(state);
         let globalState = getGlobal();
         globalState = JSON.stringify(globalState);
