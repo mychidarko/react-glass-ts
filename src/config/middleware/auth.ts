@@ -1,8 +1,8 @@
+import GlassX from "glassx";
 import { MiddlwareContext } from "glass-router/dist/@types/route";
-import { hasAuth } from "../../utils/User";
 
 const auth = ({ next }: MiddlwareContext) => {
-	if (hasAuth()) {
+	if (GlassX.get("hasAuth")) {
 		return next();
 	}
 
