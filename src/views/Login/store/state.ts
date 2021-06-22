@@ -1,5 +1,7 @@
 const state = {
-    home: true,
+    hasAuth: false,
+    user: null,
+    token: null,
 };
 
 export default state;

@@ -50,7 +50,7 @@ const Login = () => {
 					onInput={onChange}
 					onBlur={onBlur}
 					value={inputState.email}
-					className="pb:_2 form-group flex-col"
+					className="mb:_2 form-group flex-col"
 				/>
 				<Input
 					type="password"
@@ -61,7 +61,7 @@ const Login = () => {
 					onInput={onChange}
 					onBlur={onBlur}
 					value={inputState.password}
-					className="pb:_2 form-group flex-col"
+					className="mb:_3 form-group flex-col"
 				/>
 				<Button
 					loaderSize={10}
