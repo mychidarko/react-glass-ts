@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GlassX, { useStore } from "../utils/glass/store";
+import { useStore } from "glassx";
 import { Navigator, StepViewProps } from "./@types/StepView";
 
 const StepView: React.FC<StepViewProps> = ({
@@ -7,12 +7,7 @@ const StepView: React.FC<StepViewProps> = ({
     children,
     ...rest
 }) => {
-    const active = useStore("stepView") || 0;
-
-    const setActive = (newActive: number) => {
-        GlassX.set({ stepView: newActive });
-    };
-    // const [active, setActive] = useState(value || 0);
+    const [active, setActive] = useStore("stepView") || 0;
 
     children = React.Children.toArray(children);
 

@@ -1,20 +1,18 @@
 import React from "react";
-import { useStore, useReducer, setStore } from "@/utils/glass/store";
+import { useRoute } from "glass-router";
+import { useStore, useReducer } from "glassx";
+import Modal, { modal } from "react-ts-modal";
+
 import Button from "@/components/Button";
 import StepView from "@/components/StepView";
 import { Navigator } from "@/components/@types/StepView";
-import Modal from "@/utils/glass/modal";
-import { useRoute } from "@/utils/glass/router/glass-router/router";
 
 const Home = () => {
-  const home = useStore("home");
-  const modalOpen = useStore("modal");
+  const [home] = useStore("home");
 
   // change global state using a reducer
-  const changeHome = useReducer("home.changeHome");
-
-  // change global state using setStore
-  const toggleModal = () => setStore({ modal: !modalOpen });
+  // home. comes from the namespace with set in ./store/index
+  const changeHome = useReducer("home.CHANGE_HOME");
 
   // routing using glass router hooks
   const navigate = useRoute();
@@ -41,9 +39,11 @@ const Home = () => {
         <Button color="gold">Button</Button>
         <Button variant="rounded" color="purple">Rounded</Button>
         <Button variant="fab" icon="add" color="blue"></Button>
-        <Button variant="outlined" color="green" onClick={toggleModal}>Toggle Modal</Button>
+        <Button variant="outlined" color="green" onClick={() => modal.show("demo-modal")}>
+          Toggle Modal
+        </Button>
       </section>
-      <Modal show={modalOpen} close={toggleModal} name="demo-modal">
+      <Modal name="demo-modal">
         <h2>This is something</h2>
       </Modal>
     </div>

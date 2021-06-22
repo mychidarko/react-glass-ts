@@ -1,5 +1,4 @@
-import GlassX from "../utils/glass/store/index";
-import PersistedState from "../utils/glass/store/persist";
+import GlassX, { PersistedState } from "glassx";
 
 // import store modules
 import home from "./../views/Home/store";

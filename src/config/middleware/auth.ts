@@ -1,4 +1,4 @@
-import { MiddlwareContext } from "../../utils/glass/router";
+import { MiddlwareContext } from "glass-router/dist/@types/route";
 import { hasAuth } from "../../utils/User";
 
 const auth = ({ next }: MiddlwareContext) => {

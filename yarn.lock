@@ -9622,6 +9622,11 @@ react-toastify@^7.0.3:
   dependencies:
     clsx "^1.1.1"
 
+react-ts-modal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-ts-modal/-/react-ts-modal-1.1.0.tgz#c443d9d44f4d81f4d60c5b43eb01e8da7de9a9ff"
+  integrity sha512-vo3fu+acmrDLqkS7hPCfFdowRbl90aG1Jn/7GZ608DTlocrWQTiukvibG/Zyr79euQbk7AO2BrujoLaBSEBY5A==
+
 react@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"

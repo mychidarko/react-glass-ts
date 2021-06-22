@@ -1,5 +1,4 @@
-
-import { GlassRouter } from "./utils/glass/router";
+import { GlassRouter } from "glass-router";
 
 import home from "./views/Home/routes";
 import notFound from "./views/NotFound/routes";

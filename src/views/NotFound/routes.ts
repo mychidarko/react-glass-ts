@@ -1,9 +1,11 @@
+import { Route } from "glass-router/dist/@types/router";
 import NotFound from "./NotFound";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default [
+const routes: Route[] = [
   {
     path: "*",
     component: NotFound,
   },
 ];
+
+export default routes;

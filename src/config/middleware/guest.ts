@@ -1,4 +1,4 @@
-import { MiddlwareContext } from "../../utils/glass/router";
+import { MiddlwareContext } from "glass-router/dist/@types/route";
 import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "../constants";
 
 const guest = ({ next }: MiddlwareContext) => {

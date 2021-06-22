@@ -1,3 +1,3 @@
-import { State } from "@/utils/glass/store/@types/store";
+import { State } from "glassx/dist/@types/store";
 
-export const changeHome = (state: State) => ({ home: !state.home });
+export const CHANGE_HOME = (state: State) => ({ home: !state.home });

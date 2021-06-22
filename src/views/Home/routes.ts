@@ -1,8 +1,8 @@
 import Home from "./Home";
 import guest from "../../config/middleware/guest";
+import { Route } from "glass-router/dist/@types/router";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default [
+const routes: Route[] = [
   {
     path: "/",
     exact: true,
@@ -13,3 +13,5 @@ export default [
     },
   },
 ];
+
+export default routes;
