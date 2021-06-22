@@ -13,3 +13,6 @@ export interface Obj {
 export interface EBState {
     hasError: Boolean;
 };
+
+export type Dict<T = any> = Record<string, T>;
+

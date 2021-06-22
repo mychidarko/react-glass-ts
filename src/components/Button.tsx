@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   loader,
   variant,
-  color = "default",
+  color = "green",
   icon,
   loaderColor,
   loaderSize,

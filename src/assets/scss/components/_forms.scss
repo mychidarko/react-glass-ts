@@ -1,0 +1,16 @@
+.form-group {
+    input {
+        outline: none;
+        width: 300px;
+        background-color: $inputBg;
+        padding: 24px 28px;
+        border-radius: 5px;
+        border-style: none;
+        font-size: 15px;
+        color: whitesmoke;
+    }
+
+    small {
+        color: $red;
+    }
+}
