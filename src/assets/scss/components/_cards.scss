@@ -1,0 +1,16 @@
+.list-card {
+    border-radius: 6px;
+    background: $bgSecondary;
+    color: $colorSecondary;
+    border: 1px solid $bgSecondary;
+    text-decoration: none;
+
+    &:hover {
+        border: 1px solid $tintColor;
+    }
+}
+
+.data-card {
+    @extend .list-card;
+    border: 1px solid $colorTetiary;
+}

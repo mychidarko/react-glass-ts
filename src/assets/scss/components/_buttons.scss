@@ -6,7 +6,7 @@
     padding: 10px !important;
 }
 
-@mixin buttonStyles($color: $buttonBg, $text: #fff) {
+@mixin buttonStyles($color: $tintColor, $text: #fff) {
     background-color: $color;
     border: 1px solid darken($color, 5%);
     outline-color: $color;
@@ -73,7 +73,7 @@
     }
 
     &.-color-green {
-        @include buttonStyles($buttonBg);
+        @include buttonStyles($tintColor);
     }
 
     &:active, &:focus {

@@ -1,0 +1,9 @@
+.dashboard {
+    &__transactions {
+        &__title {
+            * {
+                color: $colorSecondary;
+            }
+        }
+    }
+}
