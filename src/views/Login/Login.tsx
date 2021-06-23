@@ -3,6 +3,7 @@ import { useRoute } from "glass-router";
 import React, { useState } from "react";
 import Form, { useForm, Input } from "@/components/Form";
 import Button from "@/components/Button";
+import { hermes } from "@/utils/hermes";
 
 const Login = () => {
 	const [loading, setLoading] = useState(false);
@@ -19,20 +20,23 @@ const Login = () => {
 
 	const handleLogin = () => {
 		setLoading(true);
-		
-		setTimeout(() => {
-			const user = {
-				username: "Mychi",
-				email: inputState.email,
-			};
-			const token = "5678u2hwy8g2yu1gyuw1g";
+
+		hermes({
+			url: "/admin/login",
+			method: "POST",
+			data: inputState
+		}).then((res) => {
+			const user = res.data.data.user;
+			const token = res.data.data.token;
 
 			GlassX.set({ user, token, hasAuth: true });
 
 			navigator("/dashboard");
-
+		}).catch((err) => {
+			console.log(err, "error");
+		}).finally(() => {
 			setLoading(false);
-		}, 3000);
+		});
 	};
 
 	return (
