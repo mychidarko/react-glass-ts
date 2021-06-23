@@ -1,6 +1,19 @@
-import { Link } from "glass-router";
+import { Link, useRoute } from "glass-router";
+import GlassX from "glassx";
 
 const TopNav = () => {
+    const navigate = useRoute();
+
+    const handleLogout = () => {
+        GlassX.set({
+            hasAuth: false,
+            user: null,
+            token: null,
+        });
+
+        return navigate({ name: "login" });
+    };
+
     return (
         <nav className="topnav flex pt:_4 pb:_3 px:10">
             <div className="logo w:25">
@@ -11,7 +24,7 @@ const TopNav = () => {
                 <Link to={{ name: "dashboard" }}>Home</Link>
                 <div className="ml:_3">Search</div>
                 <div style={{ flex: 100 }}></div>
-                <button>Logout</button>
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </nav>
     );
