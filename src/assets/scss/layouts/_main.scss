@@ -1,0 +1,9 @@
+.main-layout {
+    background-color: $bgPrimary;
+    min-height: 100vh;
+
+    header {
+        background-color: $bgSecondary;
+        color: $colorPrimary;
+    }
+}

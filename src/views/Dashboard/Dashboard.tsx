@@ -1,8 +1,9 @@
 import React from "react";
+import Main from "@/layouts/Main";
 
 const Dashboard = () => {
 	return (
-		<div className="dashboard">Hello</div>
+		<Main page="dashboard">Hello</Main>
 	);
 };
 
