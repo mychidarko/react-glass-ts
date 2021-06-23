@@ -1,3 +1,5 @@
+import { Link } from "glass-router";
+
 const Stats = () => {
     return (
         <div className="page-stats flex flex:center-between pt:_3 pb:_6 px:10">
@@ -27,7 +29,12 @@ const Stats = () => {
                     <p className="total-amount-bought">Total amount bought</p>
                     <h3 className="amount">GHC 300</h3>
                 </div>
-                {/* <a href="#" className="position:absolute right:0">View all reports</a> */}
+                <Link
+                    to={{ name: "reports" }}
+                    className="position:absolute right:0 view-reports"
+                >
+                    View all reports
+                </Link>
             </div>
         </div>
     );

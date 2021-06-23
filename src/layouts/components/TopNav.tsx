@@ -1,3 +1,5 @@
+import { Link } from "glass-router";
+
 const TopNav = () => {
     return (
         <nav className="topnav flex pt:_4 pb:_3 px:10">
@@ -6,7 +8,7 @@ const TopNav = () => {
             </div>
 
             <div className="topnav__content flex flex:center-all w:100">
-                <div>Home</div>
+                <Link to={{ name: "dashboard" }}>Home</Link>
                 <div className="ml:_3">Search</div>
                 <div style={{ flex: 100 }}></div>
                 <button>Logout</button>

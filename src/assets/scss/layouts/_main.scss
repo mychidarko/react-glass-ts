@@ -6,4 +6,10 @@
         background-color: $bgSecondary;
         color: $colorPrimary;
     }
+
+    .page-stats {
+        .view-reports {
+            bottom: -30px;
+        }
+    }
 }
