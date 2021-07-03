@@ -1,8 +1,39 @@
 .dashboard {
     &__transactions {
+        max-width: 490px;
+
         &__title {
             * {
                 color: $colorSecondary;
+                font-weight: normal !important;
+            }
+        }
+
+        &__transaction {
+            b {
+                color: $colorPrimary;
+            }
+
+            .status {
+                width: 9px;
+                height: 9px;
+                border-radius: 100px;
+
+                &.-failed {
+                    background: #f56565;
+                }
+
+                &.-pending {
+                    background: #ecc94b;
+                }
+
+                &.-success {
+                    background: #40a187;
+                }
+
+                &.-awaiting-payment {
+                    background-color: purple;
+                }
             }
         }
     }

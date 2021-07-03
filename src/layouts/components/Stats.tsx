@@ -7,7 +7,7 @@ const Stats = () => {
         <div className="page-stats flex flex:center-between pt:_3 pb:_6 px:10">
             <div className="welcome__details w:25">
                 <small>Welcome</small>
-                <h3>{showOnly(17, GlassX.get("user").name)}</h3>
+                <h3>{showOnly(17, GlassX.get("user")?.name || "")}</h3>
                 <h5>Admin</h5>
             </div>
             <div className="details__container flex flex:center-between w:100 position:relative">
