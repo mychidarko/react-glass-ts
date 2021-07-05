@@ -14,7 +14,7 @@ export function hermes({
 	token = null,
 	options = {
 		parseErr: true,
-		blockOffline: true,
+		blockOffline: false,
 	}
 }: HermesData): AxiosPromise {
 	const headers: any = {};
