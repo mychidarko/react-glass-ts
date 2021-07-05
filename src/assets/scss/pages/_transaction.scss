@@ -1,0 +1,65 @@
+.transaction {
+    &__data {
+        &__status {
+            border: 1px solid $bgSecondary;
+            border-radius: 4px;
+            background: $bgSecondary;
+
+            &.-pending {
+                color: $yellow !important;
+
+                &.-active {
+                    border: 1px solid $yellow;
+                }
+            }
+
+            &.-success {
+                color: $green !important;
+
+                &.-active {
+                    border: 1px solid $green;
+                }
+            }
+
+            &.-failed {
+                color: $red !important;
+
+                &.-active {
+                    border: 1px solid $red;
+                }
+            }
+        }
+
+        div {
+            > h3 {
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+            > p {
+                color: $colorPrimary;
+                font-size: 18px;
+                margin-top: 5px;
+            }
+
+            > small {
+                font-size: 12px;
+                color: $colorTetiary;
+            }
+        }
+    }
+}
+
+.transaction__aside {
+    h3 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    form {
+        input {
+            width: 300px;
+            border-radius: 4px;
+        }
+    }
+}
