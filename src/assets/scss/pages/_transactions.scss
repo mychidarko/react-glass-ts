@@ -1,0 +1,17 @@
+.transactions {
+    &__wrapper {
+        flex-wrap: wrap;
+
+        .dashboard__transactions__transaction {
+            width: 43%;
+
+            @include xl-up {
+                width: 45.5%;
+            }
+
+            @include md-down {
+                width: 100%;
+            }
+        }
+    }
+}
