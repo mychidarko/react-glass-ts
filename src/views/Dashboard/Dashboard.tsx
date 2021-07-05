@@ -7,10 +7,12 @@ import Loader from "@/components/Loader";
 
 const Dashboard = () => {
 	const [res, loadingTrans] = useGet("/admin/transactions?limit=4", {
-		token: GlassX.get("token")
+		token: GlassX.get("token"),
 	});
 
 	const transactions = res?.data?.data?.transactions;
+
+	console.log(res?.data, transactions);
 
 	return (
 		<Main page="dashboard">
