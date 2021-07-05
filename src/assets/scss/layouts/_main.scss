@@ -6,11 +6,89 @@
     header {
         background-color: $bgSecondary;
         color: $colorPrimary;
+
+        .topnav {
+            &__content {
+                a {
+                    text-decoration: none;
+                    color: $colorSecondary;
+                }
+
+                button {
+                    color: $red;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     .page-stats {
+        align-items: flex-start;
+
+        .welcome__details {
+            small {
+                color: $colorSecondary;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            h3 {
+                font-weight: 600;
+                font-size: 18px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            h5 {
+                font-size: 14px;
+                color: $colorTetiary;
+            }
+        }
+
+        .details__container {
+            > div {
+                .details {
+                    font-weight: 600;
+
+                    p {
+                        font-size: 14px;
+                        margin-bottom: 5px;
+                    }
+
+                    h3 {
+                        font-size: 18px;
+                    }
+                }
+
+                &:first-child {
+                    p {
+                        color: $green;
+                    }
+                }
+
+                &:nth-child(2) {
+                    p {
+                        color: $yellow;
+                    }
+                }
+
+                &:nth-child(3) {
+                    p {
+                        color: $colorSecondary;
+                    }
+                }
+
+                &:nth-child(4), &:nth-child(5) {
+                    h3 {
+                        color: $green;
+                    }
+                }
+            }
+        }
+
         .view-reports {
-            bottom: -30px;
+            bottom: -40px;
         }
     }
 }
