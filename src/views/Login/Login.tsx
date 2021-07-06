@@ -26,12 +26,16 @@ const Login = () => {
 			method: "POST",
 			data: inputState
 		}).then((res) => {
-			const user = res.data.data.user;
-			const token = res.data.data.token;
+			console.log(res.data);
+			
+			if (res.data?.status === "success") {
+				const user = res.data.data.user;
+				const token = res.data.data.token;
 
-			GlassX.set({ user, token, hasAuth: true });
+				GlassX.set({ user, token, hasAuth: true });
 
-			navigator("/dashboard");
+				navigator("/dashboard");
+			}
 		}).catch((err) => {
 			console.log(err, "error");
 		}).finally(() => {
