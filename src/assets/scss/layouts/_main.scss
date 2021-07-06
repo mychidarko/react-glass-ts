@@ -3,6 +3,10 @@
     min-height: 100vh;
     color: $colorSecondary;
 
+    * {
+        transition: ease all .3s;
+    }
+
     header {
         background-color: $bgSecondary;
         color: $colorPrimary;

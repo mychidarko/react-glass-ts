@@ -7,7 +7,8 @@ import GlassX from "glassx";
 
 const Transactions = () => {
 	const [res, loadingTrans] = useGet("/admin/transactions", {
-		token: GlassX.get("token")
+		token: GlassX.get("token"),
+        refresh: 30000,
 	});
 
 	const transactions = res?.data?.data?.transactions;

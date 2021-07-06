@@ -74,20 +74,20 @@ export function hermes({
 
 			return reject(errorString);
 		}
-	})
+	});
 }
 
 export function useHermes(
 	url: string,
 	options: Partial<HermesData> = {
 		method: "GET",
-	}
+	},
 ): HookResponse {
 	const [loading, setLoading] = useState(true);
 	const [response, setResponse] = useState<Partial<AxiosResponse<any>>>({});
 	const [error, setError] = useState(null);
 
-	useEffect(() => {
+	const makeRequest = () => {
 		hermes({ url, ...options })
 			.then((res) => {
 				setResponse(res);
@@ -98,6 +98,20 @@ export function useHermes(
 			.finally(() => {
 				setLoading(false);
 			});
+	};
+
+	useEffect(() => {
+		makeRequest();
+
+		if (options.refresh) {
+			const refresh = setInterval(() => {
+				makeRequest();
+			}, options.refresh);
+
+			return () => {
+				clearInterval(refresh);
+			};
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

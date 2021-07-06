@@ -6,6 +6,8 @@ export interface HermesData {
 	method?: "POST" | "GET" | "PUT";
 	token?: string | null;
 	options?: HermesOptions;
+	refresh?: number;
+	retry?: boolean;
 };
 
 export interface HermesOptions {
