@@ -1,5 +1,7 @@
 # React Glass TS
 
+**REACT GLASS HAS BEEN DEPRECATED, PLS USE [HANA JS](https://github.com/leafsphp/hana) INSTEAD. THANKS.**
+
 React Glass TS is a simple react + ts boilerplate which focuses on providing a simple and pain-free developer experience. This package uses typescript, if you prefer javascript, you can get the javascript version [here](https://github.com/darko-mychi/react-glass).
 
 ## Features
